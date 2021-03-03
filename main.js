@@ -1,0 +1,2 @@
+var currentPlayer = "";
+var ticTacSquares = [];
