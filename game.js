@@ -59,8 +59,13 @@ class Game {
       // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
   }
 
-  checkForTie() {
 
+
+  checkForTie() {
+    //ensure this.turns has an incrementer within helper function
+      if (this.turns === 9) {
+        this.tie = true;
+      } 
   }
 
   changeTurn() {
