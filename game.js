@@ -1,7 +1,7 @@
 class Game {
   constructor() {
-    this.player1 = new Player(1);
-    this.player2 = new Player(2);
+    this.player1 = new Player(1, "🦀");
+    this.player2 = new Player(2, "👽");
     this.currentTurn = 1;
     this.gameWon = false;
     this.tie = false;
@@ -15,32 +15,42 @@ class Game {
                           [0, 3, 6],
                           [1, 4, 7],
                           [2, 5, 8]
-                          // reverse versions too?
                          ]
-
-
+    //player wins more appropriate within game class or player class?
     this.squares = [
-                    { num: 0, fill: "" },
-                    { num: 1, fill: "" },
-                    { num: 2, fill: "" },
-                    { num: 3, fill: "" },
-                    { num: 4, fill: "" },
-                    { num: 5, fill: "" },
-                    { num: 6, fill: "" },
-                    { num: 7, fill: "" },
-                    { num: 8, fill: "" }
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
                    ];
-
-
   }
 
-  // checkForWin() {
-  //   if (PLACEHOLDER FOR WIN CONDITION) {
-  //     this.gameWon = true;
-  //     PLACEHOLDER FOR ADDING WIN TO CORRECT PLAYER
-  //     PLACEHOLDER FOR TIME DELAY + GAME RESET
-  //   }
-  // }
+  //click handler(main.js): first fill with appropriate player's emoji (unless already filled)
+  //
+  //fire this function on click to check for wins
+  //ensure helper function is going through all checks
+  fillSquare(squareNum) {
+    if (this.currentTurn === 1 && !this.squares[squareNum]) {
+      this.squares[squareNum] = this.player1.emoji
+    } else if (this.currentTurn === 2 && !this.squares[squareNum]) {
+      this.squares[squareNum] = this.player2.emoji
+    }
+  }
+
+  checkForWin() {
+    //loop through squares + check against winning arrays
+    if (PLACEHOLDER FOR WIN CONDITION) {
+      this.gameWon = true;
+      // PLACEHOLDER FOR ADDING WIN TO CORRECT PLAYER - make function
+      // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
+    }
+  }
+
 
 
   checkForTie() {

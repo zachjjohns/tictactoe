@@ -1,8 +1,8 @@
 class Player {
-  constructor(playerNum) {
+  constructor(playerNum, emoji) {
     this.number = playerNum;
+    this.emoji = emoji;
     this.wins = 0;
-    this.hasThePlay = false;
   }
   saveWinsToStorage() {
     
