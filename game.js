@@ -16,7 +16,6 @@ class Game {
                           [1, 4, 7],
                           [2, 5, 8]
                          ]
-    //player wins more appropriate within game class or player class?
     this.squares = [
                     "",
                     "",
@@ -31,8 +30,7 @@ class Game {
   }
 
   //click handler(main.js): first fill with appropriate player's emoji (unless already filled)
-  //
-  //fire this function on click to check for wins
+  //check for wins
   //ensure helper function is going through all checks
   checkSquare(squareNum) {
     if (!this.squares[squareNum]) {
@@ -49,15 +47,17 @@ class Game {
   }
 
   checkForWin() {
-    //loop through squares + check against winning arrays
-    if (PLACEHOLDER FOR WIN CONDITION) {
-      this.gameWon = true;
-      // PLACEHOLDER FOR ADDING WIN TO CORRECT PLAYER - make function
-      // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
+    for (var i = 0; i < this.winConditions; i++) {
+      if (this.winConditions[i] === [this.player1.emoji, this.player1.emoji, this.player1.emoji]) {
+        this.player1.wins++;
+        this.gameWon = true;
+      } else if (this.winConditions[i] === [this.player2.emoji, this.player2.emoji, this.player2.emoji]) {
+        this.player2.wins++;
+        this.gameWon = true;
+      }
     }
+      // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
   }
-
-
 
   checkForTie() {
 

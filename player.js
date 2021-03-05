@@ -4,6 +4,7 @@ class Player {
     this.emoji = emoji;
     this.wins = 0;
   }
+  
   saveWinsToStorage() {
     
   }
