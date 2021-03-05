@@ -34,10 +34,16 @@ class Game {
   //
   //fire this function on click to check for wins
   //ensure helper function is going through all checks
+  checkSquare(squareNum) {
+    if (!this.squares[squareNum]) {
+      this.fillSquare(squareNum);
+    }
+  }
+
   fillSquare(squareNum) {
-    if (this.currentTurn === 1 && !this.squares[squareNum]) {
+    if (this.currentTurn === 1) {
       this.squares[squareNum] = this.player1.emoji
-    } else if (this.currentTurn === 2 && !this.squares[squareNum]) {
+    } else {
       this.squares[squareNum] = this.player2.emoji
     }
   }
