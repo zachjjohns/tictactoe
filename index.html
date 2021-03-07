@@ -11,24 +11,28 @@
 <body>
   <div class="player1-column">
     <h1>🦀</h1>
+    <h1 id="player1Wins" class="player1-wins">0 wins</h1>
   </div>
   <div class="player2-column">
     <h1>👽</h1>
+    <h1 id="player2Wins" class="player2-wins">0 wins</h1>
   </div>
   <div class="main-game-area">
-    <h1>It's 🦀's turn</h1>
-    <div class="game-grid">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <h1 class="current-turn">It's 🦀's turn</h1>
+    <section class="game-grid">
+      <div id="square0" class="square"></div>
+      <div id="square1" class="square"></div>
+      <div id="square2" class="square"></div>
+      <div id="square3" class="square"></div>
+      <div id="square4" class="square"></div>
+      <div id="square5" class="square"></div>
+      <div id="square6" class="square"></div>
+      <div id="square7" class="square"></div>
+      <div id="square8" class="square"></div>
+    </section>
   </div>
+  <script src="player.js"></script>
+  <script src="game.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
