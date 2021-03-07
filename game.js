@@ -6,37 +6,25 @@ class Game {
     this.gameWon = false;
     this.tie = false;
     this.turns = 0;
-    this.squares = [
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
-                   ];
-    // this.winConditions = [
-    //                       [this.squares[0], this.squares[1], this.squares[2]],
-    //                       [this.squares[3], this.squares[4], this.squares[5]],
-    //                       [this.squares[6], this.squares[7], this.squares[8]],
-    //                       [this.squares[0], this.squares[4], this.squares[8]],
-    //                       [this.squares[2], this.squares[4], this.squares[6]],
-    //                       [this.squares[0], this.squares[3], this.squares[6]],
-    //                       [this.squares[1], this.squares[4], this.squares[7]],
-    //                       [this.squares[2], this.squares[5], this.squares[8]]
-    //                      ]
+    this.squares = ["", "", "", "", "", "", "", "", ""];
+    this.winCon1 = "";
+    this.winCon2 = "";
+    this.winCon3 = "";
+    this.winCon4 = "";
+    this.winCon5 = "";
+    this.winCon6 = "";
+    this.winCon7 = "";
+    this.winCon8 = "";
   }
   //click handler(main.js): first fill with appropriate player's emoji (unless already filled)
   //check for wins
   //ensure helper function is going through all checks
   ticTacToeTime(squareNum, squareVar) {
     if (!this.squares[squareNum]) {
+      this.turns++;
       this.fillSquare(squareNum, squareVar);
       this.checkForWin();
       this.checkForTie();
-      this.changeTurn();
     }
   }
 
@@ -48,36 +36,29 @@ class Game {
       this.squares[squareNum] = this.player2.emoji;
       squareVar.innerText = this.player2.emoji;
     }
+    this.changeTurn();
+  }
+
+  updateBoardState() {
+      this.winCon1 = `"${this.squares[0]}, ${this.squares[1]}, ${this.squares[2]}"`;
+      this.winCon2 = `"${this.squares[3]}, ${this.squares[4]}, ${this.squares[5]}"`;
+      this.winCon3 = `"${this.squares[6]}, ${this.squares[7]}, ${this.squares[8]}"`;
+      this.winCon4 = `"${this.squares[0]}, ${this.squares[4]}, ${this.squares[8]}"`;
+      this.winCon5 = `"${this.squares[2]}, ${this.squares[4]}, ${this.squares[6]}"`;
+      this.winCon6 = `"${this.squares[0]}, ${this.squares[3]}, ${this.squares[6]}"`;
+      this.winCon7 = `"${this.squares[1]}, ${this.squares[4]}, ${this.squares[7]}"`;
+      this.winCon8 = `"${this.squares[2]}, ${this.squares[5]}, ${this.squares[8]}"`;
   }
 
   checkForWin() {
-    var winConditions = [
-      [this.squares[0], this.squares[1], this.squares[2]],
-      [this.squares[3], this.squares[4], this.squares[5]],
-      [this.squares[6], this.squares[7], this.squares[8]],
-      [this.squares[0], this.squares[4], this.squares[8]],
-      [this.squares[2], this.squares[4], this.squares[6]],
-      [this.squares[0], this.squares[3], this.squares[6]],
-      [this.squares[1], this.squares[4], this.squares[7]],
-      [this.squares[2], this.squares[5], this.squares[8]]
-    ];
-    console.log(winConditions);
-    for (var i = 0; i < winConditions.length; i++) {
-      if (winConditions[i] === [this.player1.emoji, this.player1.emoji, this.player1.emoji]) {
-        this.player1.wins++;
-        this.gameWon = true;
-        console.log("Player 1 wins!");
-      } else if (winConditions[i] === [this.player2.emoji, this.player2.emoji, this.player2.emoji]) {
-        this.player2.wins++;
-        this.gameWon = true;
-        console.log("Player 2 wins!");
-      }
+    this.updateBoardState();
+    console.log(this.winCon1);
+    if (this.winCon1.includes("🦀, 🦀, 🦀")) {
+      console.log("WEEEEEEEEEEEN");
     }
   }
-      // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
   
-
-
+      // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
   checkForTie() {
     //ensure this.turns has an incrementer within helper function
       if (this.turns === 9) {

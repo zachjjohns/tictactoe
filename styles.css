@@ -33,6 +33,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 60px;
 }
 
 .player1-column, .player2-column {
