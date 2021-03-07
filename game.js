@@ -52,12 +52,32 @@ class Game {
 
   checkForWin() {
     this.updateBoardState();
-    console.log(this.winCon1);
-    if (this.winCon1.includes("🦀, 🦀, 🦀")) {
-      console.log("WEEEEEEEEEEEN");
-    }
+    if (this.winCon1.includes("🦀, 🦀, 🦀") || 
+        this.winCon2.includes("🦀, 🦀, 🦀") || 
+        this.winCon3.includes("🦀, 🦀, 🦀") || 
+        this.winCon4.includes("🦀, 🦀, 🦀") || 
+        this.winCon5.includes("🦀, 🦀, 🦀") || 
+        this.winCon6.includes("🦀, 🦀, 🦀") || 
+        this.winCon7.includes("🦀, 🦀, 🦀") || 
+        this.winCon8.includes("🦀, 🦀, 🦀")) 
+        {
+          this.player1.wins++;
+          console.log("PLAYER ONE WINS!");
+    } else if (
+        this.winCon1.includes("👽, 👽, 👽") ||
+        this.winCon2.includes("👽, 👽, 👽") ||
+        this.winCon3.includes("👽, 👽, 👽") ||
+        this.winCon4.includes("👽, 👽, 👽") ||
+        this.winCon5.includes("👽, 👽, 👽") ||
+        this.winCon6.includes("👽, 👽, 👽") ||
+        this.winCon7.includes("👽, 👽, 👽") ||
+        this.winCon8.includes("👽, 👽, 👽")) 
+        {
+          this.player2.wins++;
+          console.log("PLAYER TWO WINS!");
+        }
   }
-  
+
       // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
   checkForTie() {
     //ensure this.turns has an incrementer within helper function
