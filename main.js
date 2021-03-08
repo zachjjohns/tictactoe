@@ -24,16 +24,16 @@ function displayPlayerWins() {
 
 function displayCurrentTurn(playerNum) {
   if (playerNum === 2 && game.gameWon) {
-    currentTurn.innerText = `🦀 WINS!`;
+    currentTurn.innerText = `${game.player1.emoji} WINS!`;
   } else if (playerNum === 1 && game.gameWon) {
-    currentTurn.innerText = `👽 WINS!`;
+    currentTurn.innerText = `${game.player2.emoji} WINS!`;
   }
   if (playerNum === 1 && !game.gameWon) {
-    currentTurn.innerText = `It's 🦀's turn`;
+    currentTurn.innerText = `It's ${game.player1.emoji}'s turn`;
   } else if (playerNum === 2 && !game.gameWon) {
-    currentTurn.innerHTML = `It's 👽's turn`;
+    currentTurn.innerHTML = `It's ${game.player2.emoji}'s turn`;
   }
-  if (game.tie) {
+  if (game.tie && !game.gameWon) {
     currentTurn.innerText = "IT'S A TIE!";
   }
 }
@@ -91,23 +91,3 @@ function createNewGame() {
   game = new Game;
   displayCurrentTurn(game.currentTurn);
 }
-/* PSEUDOOOO
-game class:
--add event listener for player click
--create ways to target specific squares
-  -determine which square was clicked
--create function for event listener/click, update data model
-
-
--establish win conditions (8 possibilities, probably making a super-conditional)
--determine what should be instantiated within player vs game classes
--determine if using global variables is worth saying "fuggit" to getting a 4 in functionality
--create ways to target each square
--add our event listeners on click,
-  -click function should add respective player's emoji to square
-  -swap player on successful click
-  -create placeholder for win-condition-checker
--create conditional for "if square has inner value, don't fill square on click"
-  -ensure it also prevents player from swapping on bad clicks
--create event tracker within main.js to keep track of square clicks
-*/

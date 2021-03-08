@@ -60,7 +60,7 @@ class Game {
         this.winCon7.includes("🦀, 🦀, 🦀") || 
         this.winCon8.includes("🦀, 🦀, 🦀")) 
         {
-          this.player1.wins++;
+          // this.player1.wins++;
           this.gameWon = true;
           this.saveWinToPlayer();
           console.log("PLAYER ONE WINS!");
@@ -74,7 +74,7 @@ class Game {
         this.winCon7.includes("👽, 👽, 👽") ||
         this.winCon8.includes("👽, 👽, 👽")) 
         {
-          this.player2.wins++;
+          // this.player2.wins++;
           this.gameWon = true;
           this.saveWinToPlayer();
           console.log("PLAYER TWO WINS!");
@@ -82,7 +82,7 @@ class Game {
   }
 
   checkForTie() {
-      if (this.turns === 9) {
+      if (this.turns === 9 && !this.gameWon) {
         console.log("TIE!");
         this.tie = true;
       } 
@@ -122,8 +122,3 @@ class Game {
     }
   }
 }
-
-//game.js = DATA MODEL
-//main.js accesses game/player.js
-//have a method that updates a game board (what is my gameboard? how would I update? yadda yadda)
-//
