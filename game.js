@@ -62,6 +62,7 @@ class Game {
         {
           this.player1.wins++;
           this.gameWon = true;
+          this.saveWinToPlayer();
           console.log("PLAYER ONE WINS!");
     } else if (
         this.winCon1.includes("👽, 👽, 👽") ||
@@ -75,11 +76,11 @@ class Game {
         {
           this.player2.wins++;
           this.gameWon = true;
+          this.saveWinToPlayer();
           console.log("PLAYER TWO WINS!");
         }
   }
 
-      // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
   checkForTie() {
       if (this.turns === 9) {
         console.log("TIE!");
@@ -100,6 +101,24 @@ class Game {
     if (this.tie || this.gameWon) {
       this.squares = ["", "", "", "", "", "", "", "", ""];
       this.updateBoardState();
+    }
+  }
+
+  saveWinToPlayer() {
+    if (this.currentTurn === 1) {
+      this.player1.saveWinsToStorage();
+    } else {
+      this.player2.saveWinsToStorage();
+    }
+  }
+
+  retrieveWinsFromPlayer(playerNum) {
+    if (playerNum === 1) {
+      this.player1.retrieveWinsFromStorage();
+      return this.player1.wins;
+    } else {
+      this.player2.retrieveWinsFromStorage();
+      return this.player2.wins;
     }
   }
 }

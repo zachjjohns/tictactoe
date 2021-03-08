@@ -10,12 +10,25 @@ var square8 = document.querySelector("#square8");
 var gameGrid = document.querySelector("#game-grid");
 var player1Wins = document.querySelector("#player1Wins");
 var player2Wins = document.querySelector("#player2Wins");
+var currentTurn = document.querySelector("#currentTurn");
 
 var game = new Game();
 
-// window.addEventListener("onload", startGame);
+window.addEventListener("load", displayPlayerWins);
 window.addEventListener("click", clickHandler);
 
+function displayPlayerWins() {
+  player1Wins.innerText = `${game.retrieveWinsFromPlayer(1)} wins`;
+  player2Wins.innerText = `${game.retrieveWinsFromPlayer(2)} wins`;
+}
+
+function displayCurrentTurn(playerNum) {
+  if (playerNum === 1) {
+    currentTurn.innerText = `"It's ${player1.emoji}'s turn"`;
+  } else {
+    currentTurn.innerText = `"It's ${player2.emoji}'s turn"`;
+  }
+}
 
 function clickHandler(event) {
   if (event.target.id === "square0") {
@@ -46,6 +59,7 @@ function clickHandler(event) {
     game.ticTacToeTime(8, square8);
   }
   checkForBoardWipe();
+  displayPlayerWins();
 }
 
 function checkForBoardWipe() {
@@ -65,6 +79,7 @@ function createNewGame() {
   square6.innerText = "";
   square7.innerText = "";
   square8.innerText = "";
+  game = new Game;
 }
 /* PSEUDOOOO
 game class:
