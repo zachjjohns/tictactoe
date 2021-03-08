@@ -16,27 +16,23 @@ class Game {
     this.winCon7 = "";
     this.winCon8 = "";
   }
-  //click handler(main.js): first fill with appropriate player's emoji (unless already filled)
-  //check for wins
-  //ensure helper function is going through all checks
-  ticTacToeTime(squareNum, squareVar) {
-    if (!this.squares[squareNum]) {
+
+  ticTacToeTime(squareNum, squareTarget) {
+    if (!this.squares[squareNum] && squareTarget.classList.contains("square")) {
       this.turns++;
-      this.fillSquare(squareNum, squareVar);
+      this.fillSquare(squareNum, squareTarget);
       this.checkForWin();
       this.checkForTie();
+      this.changeTurn();
     }
   }
 
   fillSquare(squareNum, squareVar) {
     if (this.currentTurn === 1) {
       this.squares[squareNum] = this.player1.emoji;
-      squareVar.innerText = this.player1.emoji;
     } else {
       this.squares[squareNum] = this.player2.emoji;
-      squareVar.innerText = this.player2.emoji;
     }
-    this.changeTurn();
   }
 
   updateBoardState() {
@@ -61,8 +57,8 @@ class Game {
         this.winCon7.includes("🦀, 🦀, 🦀") || 
         this.winCon8.includes("🦀, 🦀, 🦀")) 
         {
-          this.player1.wins++;
-          console.log("PLAYER ONE WINS!");
+          this.gameWon = true;
+          this.saveWinToPlayer();
     } else if (
         this.winCon1.includes("👽, 👽, 👽") ||
         this.winCon2.includes("👽, 👽, 👽") ||
@@ -73,15 +69,13 @@ class Game {
         this.winCon7.includes("👽, 👽, 👽") ||
         this.winCon8.includes("👽, 👽, 👽")) 
         {
-          this.player2.wins++;
-          console.log("PLAYER TWO WINS!");
+          this.gameWon = true;
+          this.saveWinToPlayer();
         }
   }
 
-      // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
   checkForTie() {
-    //ensure this.turns has an incrementer within helper function
-      if (this.turns === 9) {
+      if (this.turns === 9 && !this.gameWon) {
         this.tie = true;
       } 
   }
@@ -94,9 +88,32 @@ class Game {
       this.currentTurn = 1
     }
   }
-}
 
-//game.js = DATA MODEL
-//main.js accesses game/player.js
-//have a method that updates a game board (what is my gameboard? how would I update? yadda yadda)
-//
+  resetGame() {
+    if (this.tie || this.gameWon) {
+      this.squares = ["", "", "", "", "", "", "", "", ""];
+      this.tie = false;
+      this.gameWon = false;
+      this.turns = 0;
+      this.updateBoardState();
+    }
+  }
+
+  saveWinToPlayer() {
+    if (this.currentTurn === 1) {
+      this.player1.saveWinsToStorage();
+    } else {
+      this.player2.saveWinsToStorage();
+    }
+  }
+
+  retrieveWinsFromPlayer(playerNum) {
+    if (playerNum === 1) {
+      this.player1.retrieveWinsFromStorage();
+      return this.player1.wins;
+    } else {
+      this.player2.retrieveWinsFromStorage();
+      return this.player2.wins;
+    }
+  }
+}
