@@ -17,10 +17,10 @@ class Game {
     this.winCon8 = "";
   }
 
-  ticTacToeTime(squareNum, squareVar) {
-    if (!this.squares[squareNum]) {
+  ticTacToeTime(squareNum, squareTarget) {
+    if (!this.squares[squareNum] && squareTarget.classList.contains("square")) {
       this.turns++;
-      this.fillSquare(squareNum, squareVar);
+      this.fillSquare(squareNum, squareTarget);
       this.checkForWin();
       this.checkForTie();
       this.changeTurn();
@@ -30,11 +30,8 @@ class Game {
   fillSquare(squareNum, squareVar) {
     if (this.currentTurn === 1) {
       this.squares[squareNum] = this.player1.emoji;
-      // squareVar.innerText = this.player1.emoji;
-      //remove and put into main.js file, separate data model / DOM
     } else {
       this.squares[squareNum] = this.player2.emoji;
-      // squareVar.innerText = this.player2.emoji;
     }
   }
 
@@ -60,10 +57,8 @@ class Game {
         this.winCon7.includes("🦀, 🦀, 🦀") || 
         this.winCon8.includes("🦀, 🦀, 🦀")) 
         {
-          // this.player1.wins++;
           this.gameWon = true;
           this.saveWinToPlayer();
-          console.log("PLAYER ONE WINS!");
     } else if (
         this.winCon1.includes("👽, 👽, 👽") ||
         this.winCon2.includes("👽, 👽, 👽") ||
@@ -74,16 +69,13 @@ class Game {
         this.winCon7.includes("👽, 👽, 👽") ||
         this.winCon8.includes("👽, 👽, 👽")) 
         {
-          // this.player2.wins++;
           this.gameWon = true;
           this.saveWinToPlayer();
-          console.log("PLAYER TWO WINS!");
         }
   }
 
   checkForTie() {
       if (this.turns === 9 && !this.gameWon) {
-        console.log("TIE!");
         this.tie = true;
       } 
   }

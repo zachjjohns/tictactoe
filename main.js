@@ -47,7 +47,6 @@ function updateBoard() {
 
 function checkForBoardWipe() {
   if (game.tie || game.gameWon) {
-    console.log("wiping board...");
     window.setTimeout(createNewGame, 2000);
   }
 }

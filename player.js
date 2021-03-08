@@ -6,7 +6,6 @@ class Player {
   }
 
   saveWinsToStorage() {
-    console.log("Saving win...");
     this.retrieveWinsFromStorage();
     this.wins++;
     localStorage.setItem(this.emoji, JSON.stringify(this.wins));
