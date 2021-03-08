@@ -32,6 +32,7 @@ class Game {
     if (this.currentTurn === 1) {
       this.squares[squareNum] = this.player1.emoji;
       squareVar.innerText = this.player1.emoji;
+      //remove and put into main.js file, separate data model / DOM
     } else {
       this.squares[squareNum] = this.player2.emoji;
       squareVar.innerText = this.player2.emoji;
