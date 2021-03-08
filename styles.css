@@ -34,6 +34,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 60px;
+  cursor: pointer;
 }
 
 .player1-column, .player2-column {
