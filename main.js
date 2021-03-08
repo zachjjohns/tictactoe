@@ -23,10 +23,20 @@ function displayPlayerWins() {
 }
 
 function displayCurrentTurn(playerNum) {
-  if (playerNum === 1) {
-    currentTurn.innerText = `"It's ${player1.emoji}'s turn"`;
-  } else {
-    currentTurn.innerText = `"It's ${player2.emoji}'s turn"`;
+  if (game.tie) {
+    currentTurn.innerText = "IT'S A TIE!";
+  }
+  if (playerNum === 1 && game.gameWon) {
+    currentTurn.innerText = `🦀 WINS!`;
+  } else if (playerNum === 2 && game.gameWon) {
+    currentTurn.innerText = `👽 WINS!`;
+  }
+  if (playerNum === 1 && !game.gameWon) {
+    console.log("🦀 turn");
+    currentTurn.innerText = `It's 🦀's turn`;
+  } else if (playerNum === 2 && !game.gameWon) {
+    console.log("👽 turn");
+    currentTurn.innerHTML = `It's 👽's turn`;
   }
 }
 
@@ -60,6 +70,7 @@ function clickHandler(event) {
   }
   checkForBoardWipe();
   displayPlayerWins();
+  displayCurrentTurn(game.currentTurn);
 }
 
 function checkForBoardWipe() {
@@ -80,6 +91,7 @@ function createNewGame() {
   square7.innerText = "";
   square8.innerText = "";
   game = new Game;
+  displayCurrentTurn(game.currentTurn);
 }
 /* PSEUDOOOO
 game class:

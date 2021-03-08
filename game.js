@@ -24,6 +24,7 @@ class Game {
       this.checkForWin();
       this.checkForTie();
       this.checkForReset();
+      this.changeTurn();
     }
   }
 
@@ -35,7 +36,6 @@ class Game {
       this.squares[squareNum] = this.player2.emoji;
       squareVar.innerText = this.player2.emoji;
     }
-    this.changeTurn();
   }
 
   updateBoardState() {
