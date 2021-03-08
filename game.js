@@ -82,6 +82,7 @@ class Game {
       // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
   checkForTie() {
       if (this.turns === 9) {
+        console.log("TIE!");
         this.tie = true;
       } 
   }

@@ -45,6 +45,26 @@ function clickHandler(event) {
   if (event.target.id === "square8") {
     game.ticTacToeTime(8, square8);
   }
+  checkForBoardWipe();
+}
+
+function checkForBoardWipe() {
+  if (game.tie === true || game.gameWon === true) {
+    console.log("wiping board...");
+    window.setTimeout(createNewGame, 2000)
+  }
+}
+
+function createNewGame() {
+  square0.innerText = "";
+  square1.innerText = "";
+  square2.innerText = "";
+  square3.innerText = "";
+  square4.innerText = "";
+  square5.innerText = "";
+  square6.innerText = "";
+  square7.innerText = "";
+  square8.innerText = "";
 }
 /* PSEUDOOOO
 game class:
