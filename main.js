@@ -2,11 +2,13 @@ var allSquares = document.querySelectorAll(".square");
 var player1Wins = document.querySelector("#player1Wins");
 var player2Wins = document.querySelector("#player2Wins");
 var currentTurn = document.querySelector("#currentTurn");
+var resetButton = document.querySelector("#resetButton");
 
 var game = new Game();
 
 window.addEventListener("load", displayPlayerWins);
 window.addEventListener("click", clickHandler);
+resetButton.addEventListener("click", totalReset);
 
 function displayPlayerWins() {
   player1Wins.innerText = `${game.retrieveWinsFromPlayer(1)} wins`;
@@ -25,7 +27,7 @@ function displayCurrentTurn(playerNum) {
     currentTurn.innerHTML = `It's ${game.player2.emoji}'s turn`;
   }
   if (game.tie && !game.gameWon) {
-    currentTurn.innerText = "IT'S A TIE!";
+    currentTurn.innerText = `${game.player1.emoji}IT'S A TIE!${game.player2.emoji}`;
   }
 }
 
@@ -55,4 +57,10 @@ function createNewGame() {
   game.resetGame();
   updateBoard();
   displayCurrentTurn(game.currentTurn);
+}
+
+function totalReset() {
+  localStorage.clear();
+  game.tie = true;
+  createNewGame();
 }
