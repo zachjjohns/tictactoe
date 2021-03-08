@@ -16,15 +16,14 @@ class Game {
     this.winCon7 = "";
     this.winCon8 = "";
   }
-  //click handler(main.js): first fill with appropriate player's emoji (unless already filled)
-  //check for wins
-  //ensure helper function is going through all checks
+
   ticTacToeTime(squareNum, squareVar) {
     if (!this.squares[squareNum]) {
       this.turns++;
       this.fillSquare(squareNum, squareVar);
       this.checkForWin();
       this.checkForTie();
+      this.checkForReset();
     }
   }
 
@@ -62,6 +61,7 @@ class Game {
         this.winCon8.includes("🦀, 🦀, 🦀")) 
         {
           this.player1.wins++;
+          this.gameWon = true;
           console.log("PLAYER ONE WINS!");
     } else if (
         this.winCon1.includes("👽, 👽, 👽") ||
@@ -74,13 +74,13 @@ class Game {
         this.winCon8.includes("👽, 👽, 👽")) 
         {
           this.player2.wins++;
+          this.gameWon = true;
           console.log("PLAYER TWO WINS!");
         }
   }
 
       // PLACEHOLDER FOR TIME DELAY + GAME RESET - make function
   checkForTie() {
-    //ensure this.turns has an incrementer within helper function
       if (this.turns === 9) {
         this.tie = true;
       } 
@@ -92,6 +92,13 @@ class Game {
     }
     else {
       this.currentTurn = 1
+    }
+  }
+
+  checkForReset() {
+    if (this.tie || this.gameWon) {
+      this.squares = ["", "", "", "", "", "", "", "", ""];
+      this.updateBoardState();
     }
   }
 }
