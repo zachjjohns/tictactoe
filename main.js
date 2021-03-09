@@ -15,7 +15,7 @@ function displayPlayerWins() {
   player2Wins.innerText = `${game.retrieveWinsFromPlayer(2)} wins`;
 }
 
-function displayCurrentTurn(playerNum) {
+function displayGameStatus(playerNum) {
   if (playerNum === 2 && game.gameWon) {
     currentTurn.innerText = `${game.player1.emoji} WINS!`;
   } else if (playerNum === 1 && game.gameWon) {
@@ -38,7 +38,7 @@ function clickHandler(event) {
   }
   checkForBoardWipe();
   displayPlayerWins();
-  displayCurrentTurn(game.currentTurn);
+  displayGameStatus(game.currentTurn);
 }
 
 function updateBoard() {
@@ -56,7 +56,7 @@ function checkForBoardWipe() {
 function createNewGame() {
   game.resetGame();
   updateBoard();
-  displayCurrentTurn(game.currentTurn);
+  displayGameStatus(game.currentTurn);
 }
 
 function totalReset() {

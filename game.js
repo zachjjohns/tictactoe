@@ -75,9 +75,9 @@ class Game {
   }
 
   checkForTie() {
-      if (this.turns === 9 && !this.gameWon) {
-        this.tie = true;
-      } 
+    if (this.turns === 9 && !this.gameWon) {
+      this.tie = true;
+    } 
   }
 
   changeTurn() {
