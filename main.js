@@ -34,14 +34,14 @@ function displayGameStatus(playerNum) {
 function clickHandler(event) {
   if (!game.gameWon && !game.tie) {
     game.ticTacToeTime(event.target.id, event.target);
-    updateBoard();
+    updateBoardDisplay();
   }
   checkForBoardWipe();
   displayPlayerWins();
   displayGameStatus(game.currentTurn);
 }
 
-function updateBoard() {
+function updateBoardDisplay() {
   for (var i = 0; i < allSquares.length; i++) {
     allSquares[i].innerText = game.squares[i];
   }
@@ -55,7 +55,7 @@ function checkForBoardWipe() {
 
 function createNewGame() {
   game.resetGame();
-  updateBoard();
+  updateBoardDisplay();
   displayGameStatus(game.currentTurn);
 }
 

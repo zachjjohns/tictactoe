@@ -20,14 +20,14 @@ class Game {
   ticTacToeTime(squareNum, squareTarget) {
     if (!this.squares[squareNum] && squareTarget.classList.contains("square")) {
       this.turns++;
-      this.fillSquare(squareNum, squareTarget);
+      this.fillSquare(squareNum);
       this.checkForWin();
       this.checkForTie();
       this.changeTurn();
     }
   }
 
-  fillSquare(squareNum, squareVar) {
+  fillSquare(squareNum) {
     if (this.currentTurn === 1) {
       this.squares[squareNum] = this.player1.emoji;
     } else {
