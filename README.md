@@ -31,6 +31,7 @@
     * Use your problem solving process to break down large problems, solve things step by step, and trust yourself to not rely on an outside “answer” to a logical challenge
 
 ## Future Additions
+* Save winning boards to display in respective player's column
 * Choose-your-emoji functionality
 * Play VS Computer / AI
 * Scaling for mobile

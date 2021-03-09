@@ -20,14 +20,14 @@ class Game {
   ticTacToeTime(squareNum, squareTarget) {
     if (!this.squares[squareNum] && squareTarget.classList.contains("square")) {
       this.turns++;
-      this.fillSquare(squareNum, squareTarget);
+      this.fillSquare(squareNum);
       this.checkForWin();
       this.checkForTie();
       this.changeTurn();
     }
   }
 
-  fillSquare(squareNum, squareVar) {
+  fillSquare(squareNum) {
     if (this.currentTurn === 1) {
       this.squares[squareNum] = this.player1.emoji;
     } else {
@@ -57,7 +57,6 @@ class Game {
         this.winCon7.includes("🦀, 🦀, 🦀") || 
         this.winCon8.includes("🦀, 🦀, 🦀")) 
         {
-          this.gameWon = true;
           this.saveWinToPlayer();
     } else if (
         this.winCon1.includes("👽, 👽, 👽") ||
@@ -69,7 +68,6 @@ class Game {
         this.winCon7.includes("👽, 👽, 👽") ||
         this.winCon8.includes("👽, 👽, 👽")) 
         {
-          this.gameWon = true;
           this.saveWinToPlayer();
         }
   }
@@ -100,6 +98,7 @@ class Game {
   }
 
   saveWinToPlayer() {
+    this.gameWon = true;
     if (this.currentTurn === 1) {
       this.player1.saveWinsToStorage();
     } else {

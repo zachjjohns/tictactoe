@@ -15,6 +15,22 @@ function displayPlayerWins() {
   player2Wins.innerText = `${game.retrieveWinsFromPlayer(2)} wins`;
 }
 
+function clickHandler(event) {
+  if (!game.gameWon && !game.tie) {
+    game.ticTacToeTime(event.target.id, event.target);
+    updateBoardDisplay();
+  }
+  checkForBoardWipe();
+  displayPlayerWins();
+  displayGameStatus(game.currentTurn);
+}
+
+function updateBoardDisplay() {
+  for (var i = 0; i < allSquares.length; i++) {
+    allSquares[i].innerText = game.squares[i];
+  }
+}
+
 function displayGameStatus(playerNum) {
   if (playerNum === 2 && game.gameWon) {
     currentTurn.innerText = `${game.player1.emoji} WINS!`;
@@ -31,22 +47,6 @@ function displayGameStatus(playerNum) {
   }
 }
 
-function clickHandler(event) {
-  if (!game.gameWon && !game.tie) {
-    game.ticTacToeTime(event.target.id, event.target);
-    updateBoard();
-  }
-  checkForBoardWipe();
-  displayPlayerWins();
-  displayGameStatus(game.currentTurn);
-}
-
-function updateBoard() {
-  for (var i = 0; i < allSquares.length; i++) {
-    allSquares[i].innerText = game.squares[i];
-  }
-}
-
 function checkForBoardWipe() {
   if (game.tie || game.gameWon) {
     window.setTimeout(createNewGame, 2000);
@@ -55,7 +55,7 @@ function checkForBoardWipe() {
 
 function createNewGame() {
   game.resetGame();
-  updateBoard();
+  updateBoardDisplay();
   displayGameStatus(game.currentTurn);
 }
 
