@@ -36,14 +36,14 @@ class Game {
   }
 
   updateBoardState() {
-      this.winCon1 = `"${this.squares[0]}, ${this.squares[1]}, ${this.squares[2]}"`;
-      this.winCon2 = `"${this.squares[3]}, ${this.squares[4]}, ${this.squares[5]}"`;
-      this.winCon3 = `"${this.squares[6]}, ${this.squares[7]}, ${this.squares[8]}"`;
-      this.winCon4 = `"${this.squares[0]}, ${this.squares[4]}, ${this.squares[8]}"`;
-      this.winCon5 = `"${this.squares[2]}, ${this.squares[4]}, ${this.squares[6]}"`;
-      this.winCon6 = `"${this.squares[0]}, ${this.squares[3]}, ${this.squares[6]}"`;
-      this.winCon7 = `"${this.squares[1]}, ${this.squares[4]}, ${this.squares[7]}"`;
-      this.winCon8 = `"${this.squares[2]}, ${this.squares[5]}, ${this.squares[8]}"`;
+    this.winCon1 = `"${this.squares[0]}, ${this.squares[1]}, ${this.squares[2]}"`;
+    this.winCon2 = `"${this.squares[3]}, ${this.squares[4]}, ${this.squares[5]}"`;
+    this.winCon3 = `"${this.squares[6]}, ${this.squares[7]}, ${this.squares[8]}"`;
+    this.winCon4 = `"${this.squares[0]}, ${this.squares[4]}, ${this.squares[8]}"`;
+    this.winCon5 = `"${this.squares[2]}, ${this.squares[4]}, ${this.squares[6]}"`;
+    this.winCon6 = `"${this.squares[0]}, ${this.squares[3]}, ${this.squares[6]}"`;
+    this.winCon7 = `"${this.squares[1]}, ${this.squares[4]}, ${this.squares[7]}"`;
+    this.winCon8 = `"${this.squares[2]}, ${this.squares[5]}, ${this.squares[8]}"`;
   }
 
   checkForWin() {
@@ -75,9 +75,9 @@ class Game {
   }
 
   checkForTie() {
-      if (this.turns === 9 && !this.gameWon) {
-        this.tie = true;
-      } 
+    if (this.turns === 9 && !this.gameWon) {
+      this.tie = true;
+    } 
   }
 
   changeTurn() {
