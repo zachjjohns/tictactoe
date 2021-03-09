@@ -15,22 +15,6 @@ function displayPlayerWins() {
   player2Wins.innerText = `${game.retrieveWinsFromPlayer(2)} wins`;
 }
 
-function displayGameStatus(playerNum) {
-  if (playerNum === 2 && game.gameWon) {
-    currentTurn.innerText = `${game.player1.emoji} WINS!`;
-  } else if (playerNum === 1 && game.gameWon) {
-    currentTurn.innerText = `${game.player2.emoji} WINS!`;
-  }
-  if (playerNum === 1 && !game.gameWon) {
-    currentTurn.innerText = `It's ${game.player1.emoji}'s turn`;
-  } else if (playerNum === 2 && !game.gameWon) {
-    currentTurn.innerHTML = `It's ${game.player2.emoji}'s turn`;
-  }
-  if (game.tie && !game.gameWon) {
-    currentTurn.innerText = `${game.player1.emoji}IT'S A TIE!${game.player2.emoji}`;
-  }
-}
-
 function clickHandler(event) {
   if (!game.gameWon && !game.tie) {
     game.ticTacToeTime(event.target.id, event.target);
@@ -44,6 +28,22 @@ function clickHandler(event) {
 function updateBoardDisplay() {
   for (var i = 0; i < allSquares.length; i++) {
     allSquares[i].innerText = game.squares[i];
+  }
+}
+
+function displayGameStatus(playerNum) {
+  if (playerNum === 2 && game.gameWon) {
+    currentTurn.innerText = `${game.player1.emoji} WINS!`;
+  } else if (playerNum === 1 && game.gameWon) {
+    currentTurn.innerText = `${game.player2.emoji} WINS!`;
+  }
+  if (playerNum === 1 && !game.gameWon) {
+    currentTurn.innerText = `It's ${game.player1.emoji}'s turn`;
+  } else if (playerNum === 2 && !game.gameWon) {
+    currentTurn.innerHTML = `It's ${game.player2.emoji}'s turn`;
+  }
+  if (game.tie && !game.gameWon) {
+    currentTurn.innerText = `${game.player1.emoji}IT'S A TIE!${game.player2.emoji}`;
   }
 }
 

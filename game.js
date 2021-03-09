@@ -57,7 +57,6 @@ class Game {
         this.winCon7.includes("🦀, 🦀, 🦀") || 
         this.winCon8.includes("🦀, 🦀, 🦀")) 
         {
-          this.gameWon = true;
           this.saveWinToPlayer();
     } else if (
         this.winCon1.includes("👽, 👽, 👽") ||
@@ -69,7 +68,6 @@ class Game {
         this.winCon7.includes("👽, 👽, 👽") ||
         this.winCon8.includes("👽, 👽, 👽")) 
         {
-          this.gameWon = true;
           this.saveWinToPlayer();
         }
   }
@@ -100,6 +98,7 @@ class Game {
   }
 
   saveWinToPlayer() {
+    this.gameWon = true;
     if (this.currentTurn === 1) {
       this.player1.saveWinsToStorage();
     } else {
